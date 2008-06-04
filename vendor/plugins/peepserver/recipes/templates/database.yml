@@ -1,0 +1,7 @@
+production:
+  adapter: mysql
+  encoding: utf8
+  database: mephisto_production
+  username: deploy
+  password: melorbode
+  socket: /tmp/mysql.sock
