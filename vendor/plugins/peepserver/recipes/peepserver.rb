@@ -41,6 +41,9 @@ end
 # Author: Geoffrey Grosenbach http://topfunky.com
 #         November 2007
 
+##
+# Edited for Ubuntu Hardy with Passenger (modrails) by Carl Tanner 6/08
+
 namespace :peepcode do
 
   desc "Copy config files"
@@ -54,7 +57,7 @@ namespace :peepcode do
     result = render_erb_template(File.dirname(__FILE__) + "/templates/spin.erb")
     put result, "#{release_path}/script/spin", :mode => 0755
   end
-  after "deploy:update_code", "peepcode:generate_spin_script"
+  ## after "deploy:update_code", "peepcode:generate_spin_script"
 
   desc "Create shared/config directory and default database.yml."
   task :create_shared_config do
@@ -70,18 +73,18 @@ namespace :peepcode do
   end
   after "deploy:setup", "peepcode:create_shared_config"
 
-  namespace :setup do
+  ## namespace :setup do
 
-    desc "Setup Nginx vhost config"
-    task :nginx_vhost, :roles => :app do
-      result = render_erb_template(File.dirname(__FILE__) + "/templates/nginx.vhost.conf.erb")
-      put result, "/tmp/nginx.vhost.conf"
-      sudo "mkdir -p /usr/local/nginx/conf/vhosts"
-      sudo "cp /tmp/nginx.vhost.conf /usr/local/nginx/conf/vhosts/#{application}.conf"
-      inform "You must edit nginx.conf to include the vhost config file."
-    end
+##    desc "Setup Nginx vhost config"
+##    task :nginx_vhost, :roles => :app do
+##      result = render_erb_template(File.dirname(__FILE__) + "/templates/nginx.vhost.conf.erb")
+##      put result, "/tmp/nginx.vhost.conf"
+##      sudo "mkdir -p /usr/local/nginx/conf/vhosts"
+##      sudo "cp /tmp/nginx.vhost.conf /usr/local/nginx/conf/vhosts/#{application}.conf"
+##      inform "You must edit nginx.conf to include the vhost config file."
+##    end
 
-  end
+ ## end
 
   namespace :install do
 
@@ -92,13 +95,13 @@ namespace :peepcode do
       # TODO
       # * Uninstall httpd: chkconfig --del httpd
 
-      git
-      nginx
-      memcached
-      munin
-      httperf
-      emacs
-      tree
+      ## git
+      ## nginx
+      ## memcached
+      ## munin
+      ## httperf
+      ## emacs
+      ## tree
       special_gems
       set_time_to_utc
     end
@@ -165,7 +168,7 @@ namespace :peepcode do
 
     desc "Install gems needed by PeepCode"
     task :special_gems do
-      # TODO hpricot
+      # TODO hpricot, ImageScience
       %w(libxml-ruby gruff sparklines ar_mailer bong production_log_analyzer).each do |gemname|
         sudo "gem install #{gemname} -y"
       end
