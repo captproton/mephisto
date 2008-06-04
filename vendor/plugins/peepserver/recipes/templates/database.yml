@@ -4,4 +4,4 @@ production:
   database: mephisto_production
   username: deploy
   password: melorbode
-  socket: /tmp/mysql.sock
+  socket: /var/run/mysqld/mysqld.sock
