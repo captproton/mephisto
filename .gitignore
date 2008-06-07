@@ -8,7 +8,6 @@ themes/*
 tmp/**/*
 log/*.log
 config/amazon_s3.yml
-config/database.yml
 vendor/rails
 db/*.rb
 doc/api
