@@ -1,16 +1,19 @@
-# This defines a deployment "recipe" that you can feed to switchtower
-# (http://manuals.rubyonrails.com/read/book/17). It allows you to automate
-# (among other things) the deployment of your application.
+#############################################################
+#	Settings
+#############################################################
 
-# =============================================================================
-# REQUIRED VARIABLES
-# =============================================================================
-# You must always specify the application and repository for every recipe. The
-# repository must be the URL of the repository you want this recipe to
-# correspond to. The deploy_to path must be the path on each machine that will
-# form the root of the application path.
+default_run_options[:pty] = true
+set :use_sudo, true
 
+#############################################################
+#	Application
+#############################################################
 set :application, "mephisto"
+set :deploy_to, "/home/deploy/#{application}"
+
+set :repository,  "git://github.com/captproton/caboo.se-sample-app-v3.git"
+set :scm, :git
+
 set :repository, "http://svn.techno-weenie.net/projects/mephisto"
 
 # =============================================================================

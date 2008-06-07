@@ -4,3 +4,12 @@ config/deploy.rb
 log
 tmp
 themes/*
+.DS_Store
+tmp/**/*
+log/*.log
+config/amazon_s3.yml
+config/database.yml
+vendor/rails
+db/*.rb
+doc/api
+doc/app
