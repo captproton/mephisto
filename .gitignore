@@ -13,3 +13,4 @@ vendor/rails
 db/*.rb
 doc/api
 doc/app
+themes/*
